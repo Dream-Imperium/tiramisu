@@ -31,3 +31,5 @@ $ sudo make install
 If your distribution has any files specific to it, they can be found in `dist`. Replace everything in `/usr/lib/tiramisu` with your distribution specific files for optimal usage with your distribution.
 
 If they're not available, feel free to contribute or request them.
+
+:)

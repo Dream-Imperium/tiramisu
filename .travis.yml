@@ -1,0 +1,9 @@
+language: bash
+sudo: required
+
+os:
+    - linux
+
+script:
+    - shellcheck -e SC1091,SC1091 ./usr/lib/tiramisu/fs ./usr/lib/hummingbird/tty ./usr/lib/hummingbird/shutdown
+    - make
