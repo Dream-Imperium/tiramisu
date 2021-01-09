@@ -16,7 +16,7 @@
 
 #include "config.h"
 
-/* spruce up the execution of external shell scripts */
+/* Prettify the execution of external shell scripts. */
 #define SCRIPT(X) execute("/usr/lib/tiramisu/" #X)
 #define FALLBACK_HOSTNAME "linux"
 
@@ -27,20 +27,20 @@ int main(int argc, char **argv) {
     int fd;
     struct stat status;
     char *hostname = "linux";
-    void *seed
+    void *seed;
 
     if (getpid() != 1) {
-      fputs("Tiramisu must be run as PID 1.", stderr);
-      return EXIT_FAILURE;
+        fputs("Tiramisu must be run as PID 1.", stderr);
+        return EXIT_FAILURE;
     }
 
     signal(SIGUSR1, handler);
     signal(SIGINT, handler);
 
-    mount("proc", "/proc", "proc",    MS_NOEXEC | MS_NOSUID | MS_NODEV, NULL);
-    mount("sys", "/sys", "sysfs",     MS_NOEXEC | MS_NOSUID | MS_NODEV, NULL);
-    mount("run", "/run", "tmpfs",     MS_NOSUID | MS_NODEV,      "mode=0755");
-    mount("dev", "/dev", "devtmpfs",  MS_NOSUID,                 "mode=0755");
+    mount("proc", "/proc", "proc",     MS_NOEXEC | MS_NOSUID | MS_NODEV, NULL);
+    mount("sys",  "/sys",  "sysfs",    MS_NOEXEC | MS_NOSUID | MS_NODEV, NULL);
+    mount("run",  "/run",  "tmpfs",    MS_NOSUID | MS_NODEV,      "mode=0755");
+    mount("dev",  "/dev",  "devtmpfs", MS_NOSUID,                 "mode=0755");
 
     SCRIPT(fs);
 
