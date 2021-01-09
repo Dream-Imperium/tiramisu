@@ -1,0 +1,6 @@
+#!/bin/sh
+rm -rf /tmp/* /var/tmp/*
+dd count=1 bs=512 if=/dev/random of=/usr/lib/tiramisu/random.seed
+
+swapoff -a
+umount -a -r

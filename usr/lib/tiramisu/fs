@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# shellcheck disable=2174
+mkdir -p -m0755 /dev/pts /dev/shm /run/lock
+
+mount remount,rw /
+mount -a
+swapon -a

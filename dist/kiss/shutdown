@@ -1,0 +1,18 @@
+#!/bin/sh
+
+. /usr/lib/tiramisu/rc.lib
+
+for file in /etc/tiramisu.d/*.pre.shutdown /etc/rc.d/*.pre.shutdown; do
+	[ -f "$file" ] && . "$file"
+done
+
+rm -r /tmp/*
+dd count=1 bs=512 if=/dev/random of=/usr/lib/tiramisu/random.seed
+
+
+# killall processes
+swapoff -a
+umount -a -l
+umount -a
+
+mount -o remount,ro /
